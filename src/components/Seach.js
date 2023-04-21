@@ -23,9 +23,25 @@ const Subtitulo = styled.h3`
     font-weight: 500;
     margin-bottom: 40px;
 `
+const Resultado = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    p {
+        width: 200px;
+    }
+    img {
+        width: 100px;
+    }
+    &:hover {
+        border: 1px solid white;
+    }
+`
 function Search (){
     const [livrosPesquisados, setLivrosPesquisados] = useState([])
-    console.log(livrosPesquisados)
+
     return (
         <SeachContainer>
             <Titulo>Já sabe por onde começar</Titulo>
@@ -38,7 +54,12 @@ function Search (){
 
             } }
             />
-            <p>{`O texto digitado é ${livrosPesquisados}`}</p>
+            {livrosPesquisados.map(livro => (
+                <Resultado>
+                    <img src={livro.src} />
+                    <p>{livro.nome}</p>
+                </Resultado>
+            ))}
         </SeachContainer>
     )
 }
